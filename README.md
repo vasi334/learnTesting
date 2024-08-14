@@ -1,5 +1,3 @@
-# FanTESTic
-
 This application is meant for learning how to test Java applications. 
 
 ## Level 1 - Assertions
