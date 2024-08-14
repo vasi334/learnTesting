@@ -28,6 +28,7 @@ public class CloudTest {
     // Using constants with suggestive names makes the unit tests more readable
     private static final int ORIGINAL_ALTITUDE = 100;
     private static final int VALID_MOVEMENT = 50;
+    private static final int INVALID_MOVEMENT = -40;
     private static final int INVALID_MOVEMENT_UP = 20_000;
     private static final int INVALID_MOVEMENT_DOWN = 101;
 
@@ -48,6 +49,16 @@ public class CloudTest {
         // JUnit 5
         assertNotNull(cloud);
         assertEquals(cloud.getAltitude(), VALID_MOVEMENT + ORIGINAL_ALTITUDE);
+    }
+
+    @Test
+    @DisplayName("For floatUp(), when given an invalid movement, throw an IllegalArgumentException.")
+    public void floatUpMovementFails(){
+        Cloud cloud = getCloudForTesting();
+
+        assertNotNull(cloud);
+        assertThrows(IllegalArgumentException.class,
+                () -> cloud.floatUp(INVALID_MOVEMENT));
     }
 
     @Test
@@ -89,6 +100,16 @@ public class CloudTest {
         // JUnit5
         assertThrows(CloudWentDownException.class,
                 () -> cloud.floatDown(INVALID_MOVEMENT_DOWN));
+    }
+
+    @Test
+    @DisplayName("For floatDown(), when given an invalid movement, throw an IllegalArgumentException.")
+    public void floatDownMovementThrowsError(){
+        Cloud cloud = getCloudForTesting();
+
+        assertNotNull(cloud);
+        assertThrows(IllegalArgumentException.class,
+                () -> cloud.floatDown(INVALID_MOVEMENT));
     }
 
     // We can use this kind of util methods in order to avoid duplicated code.

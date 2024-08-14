@@ -57,7 +57,6 @@ public class Cloud {
         } else {
             altitude = newAltitude;
         }
-
         return altitude;
     }
 
