@@ -32,7 +32,7 @@ public class Cloud {
         }
 
         int newAltitude = altitude + movement;
-        if (newAltitude < MAX_ALTITUDE) {
+        if (newAltitude > MAX_ALTITUDE) {
             log.info("A cloud cannot go higher than {}. We are staying here.", MAX_ALTITUDE);
         } else {
             altitude = newAltitude;
