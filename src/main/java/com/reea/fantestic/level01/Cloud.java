@@ -55,8 +55,10 @@ public class Cloud {
         if (newAltitude <= 0) {
             throw new CloudWentDownException("The cloud no longer exists!");
         } else {
-            return newAltitude;
+            altitude = newAltitude;
         }
+
+        return altitude;
     }
 
 }
